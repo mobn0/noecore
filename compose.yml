@@ -1,0 +1,44 @@
+services:
+  backend: 
+    build: 
+      context: backend
+      target: release
+
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+
+    ports:
+      - 8080:8080
+    
+    depends_on:
+      db:
+        condition: service_healthy
+
+    restart: always
+    
+  db:
+    image: postgres@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
+
+    volumes:
+      - db-data:/var/lib/postgresql/:rw
+
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+      interval: 1s
+      timeout: 3s
+      retries: 3
+
+    ports:
+      - 5432:5432
+
+    restart: always
+
+volumes:
+  db-data:
