@@ -1,6 +1,6 @@
 services:
-  backend: 
-    build: 
+  backend:
+    build:
       context: backend
       target: release
 
@@ -10,14 +10,22 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
 
     ports:
-      - 8080:8080
-    
+      - 8088:8080
+
     depends_on:
       db:
         condition: service_healthy
 
     restart: always
+
+  frontend:
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
     
+    ports:
+      - 4200:4200
+
   db:
     image: postgres@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
 
@@ -28,7 +36,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
-    
+
     healthcheck:
       test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
       interval: 1s
@@ -40,5 +48,50 @@ services:
 
     restart: always
 
+  keycloak:
+    image: quay.io/keycloak/keycloak@sha256:ff4257d0d64efbe99ed1ddfaf07765cc3c36dc7518bf8324d41961327f441c54
+
+    environment:
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=${KC_BOOTSTRAP_ADMIN_PASSWORD}
+      - KC_BOOTSTRAP_ADMIN_USERNAME=${KC_BOOTSTRAP_ADMIN_USERNAME}
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=kc-db
+      - KC_DB_DATABASE=keycloak
+      - KC_DB_USERNAME=${POSTGRES_USER}
+      - KC_DB_PASSWORD=${POSTGRES_PASSWORD}
+
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+
+    restart: always
+
+    depends_on:
+      kc-db:
+        condition: service_healthy
+    ports:
+      - 0.0.0.0:8080:8080
+
+    command: start-dev --import-realm
+
+  kc-db:
+    image: postgres@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
+
+    volumes:
+      - kc-db-data:/var/lib/postgresql/:rw
+
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=keycloak
+
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER} -d keycloak
+      interval: 1s
+      timeout: 3s
+      retries: 3
+
+    restart: always
+
 volumes:
   db-data:
+  kc-db-data:

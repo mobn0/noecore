@@ -1,4 +1,4 @@
-package user
+package users
 
 import (
 	"github.com/gin-gonic/gin"
@@ -7,5 +7,5 @@ import (
 
 func Setup(controller *gin.RouterGroup) {
 	validate := validator.New()
-
+	validate = validate
 }
