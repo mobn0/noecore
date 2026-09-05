@@ -1,19 +1,4 @@
-FROM golang@sha256:0ecdc2a9f6156af6451080bfe3d8382a662fcc4e209608c6f919e643453514c1 AS base
-
-FROM base AS dev
-
-WORKDIR /go/src/build
-
-COPY ./src/go.mod ./
-COPY ./src/go.sum ./
-RUN go mod download
-
-COPY ./src ./
-
-ENTRYPOINT [ "go", "run", "server.go" ]
-
-
-FROM base AS build
+FROM golang@sha256:0ecdc2a9f6156af6451080bfe3d8382a662fcc4e209608c6f919e643453514c1 AS build
 
 WORKDIR /go/src/build
 

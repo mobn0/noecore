@@ -1,0 +1,7 @@
+<p>messageboard works!</p>
+
+@for (post of posts().posts; track post) {
+    <p>{{ post }}</p>
+} @empty {
+    <p>There are no posts!</p>
+}
