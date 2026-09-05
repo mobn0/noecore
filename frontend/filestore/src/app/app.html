@@ -1,11 +1,13 @@
 <mat-toolbar class="navbar">
-  <h1>Filestore</h1>
-<span class="spacer"></span>
+  <a routerLink="/" matButton>
+    <h1>Filestore</h1>
+  </a>
 
-  <a routerLink="/" matButton>Home</a>
+  <span class="spacer"></span>
+
   <a routerLink="/messageboard" matButton>Messageboard</a>
 </mat-toolbar>
 
 <main>
-<router-outlet />
+  <router-outlet />
 </main>

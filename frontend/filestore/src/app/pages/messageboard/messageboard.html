@@ -1,13 +1,12 @@
 <h1>Messageboard</h1>
 
 <mat-card appearance="outlined" class="messages">
-    <mat-card-content >
+    <div class="content">
 @for (post of posts().posts; track post) {
-    <p>{{ post }}</p>
+    <p >{{ post }}</p>
 } @empty {
-    <p>There are no posts!</p>
-}
-</mat-card-content>
+    <p >There are no posts!</p>
+}</div>
 </mat-card>
 
 <form [formGroup]="form" (ngSubmit)="submitForm()">
