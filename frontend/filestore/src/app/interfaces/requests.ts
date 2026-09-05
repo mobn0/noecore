@@ -1,6 +1,7 @@
 export interface Response<data> {
-    success: string
-    data: data
+    success: boolean
+    data?: data
+    error?: {message: string}
 
 }
 
@@ -10,5 +11,9 @@ export interface GetPostsResponse{
 
 export interface PostRequest {
     post: string
+}
+
+export interface PostResponse {
+    Message: string
 }
 
