@@ -1,0 +1,18 @@
+
+<mat-toolbar class="navbar">
+  <a routerLink="/" matButton>
+    <h1>Filestore</h1>
+  </a>
+
+  <span class="spacer"></span>
+
+  @if (is_poster) {
+  <a routerLink="/messageboard" matButton>Messageboard</a>
+  }
+
+  @if (is_logged_in) {
+      <app-logout />
+    } @else {
+      <app-login />
+  }
+</mat-toolbar>

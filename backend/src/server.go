@@ -12,7 +12,11 @@ func main() {
 
 	engine := gin.New()
 	engine.Use(gin.Recovery(), gin.Logger())
-	engine.Use(cors.Default())
+	engine.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"http://localhost:4200"},
+		AllowMethods: []string{"GET", "POST"},
+		AllowHeaders: []string{"authorization", "content-type"},
+	}))
 	engine.Use(database.DatabaseMiddleware(db))
 
 	msgboard.Setup(engine.Group("/msgboard"))

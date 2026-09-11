@@ -1,6 +1,13 @@
 import { Routes } from '@angular/router';
 import { Messageboard } from './pages/messageboard/messageboard';
 import { Home } from './pages/home/home';
+import { canActivateAuthRole } from './guard/auth/auth-guard';
+import { Forbidden } from './pages/forbidden/forbidden';
+import { inject } from '@angular/core';
+import { Roles } from './app.constants';
+import { Notfound } from './pages/notfound/notfound';
+
+const roles = new Roles()
 
 export const routes: Routes = [
     {
@@ -8,7 +15,17 @@ export const routes: Routes = [
         component: Home
     },
     {
+        path: "forbidden",
+        component: Forbidden
+    },
+    {
         path: "messageboard",
-        component: Messageboard
+        component: Messageboard,
+        canActivate: [canActivateAuthRole],
+        data: { role: roles.poster }
+    },
+    {
+        path:"**",
+        component:Notfound
     }
 ];
