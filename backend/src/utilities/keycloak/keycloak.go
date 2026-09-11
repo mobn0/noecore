@@ -7,13 +7,16 @@ import (
 	"github.com/mobn0/keygonomics"
 )
 
-func Verifier() (*keygonomics.Verifier, error) {
-
-	verifier, err := keygonomics.NewFromIssuer(fmt.Sprintf("http://keycloak:8080/realms/%s", environment.KeycloakRealm.GetValue()))
+func New() *keygonomics.Client {
+	kc, err := keygonomics.New(keygonomics.Config{
+		Issuer:       fmt.Sprintf("http://keycloak:8080/realms/%s", environment.KeycloakRealm.GetValue()),
+		ClientID:     environment.KeycloakClientID.GetValue(),
+		ClientSecret: environment.KeycloakClientSecret.GetValue(),
+	})
 
 	if err != nil {
-		return &keygonomics.Verifier{}, err
+		panic(fmt.Sprintf("Unable to connect to Keycloak: %s", err.Error()))
 	}
 
-	return verifier, nil
+	return kc
 }

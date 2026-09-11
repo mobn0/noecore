@@ -16,4 +16,5 @@ export class AppConstants {
 })
 export class Roles {
     public poster = "poster"
+    public admin = "admin"
 }

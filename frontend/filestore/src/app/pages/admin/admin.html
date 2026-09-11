@@ -1,0 +1,10 @@
+
+
+<mat-card appearance="outlined" class="users">
+    <div class="content">
+@for (user of users().users; track user) {
+    <p >{{ user.username }}</p>
+} @empty {
+    <p >There are no users!</p>
+}</div>
+</mat-card>

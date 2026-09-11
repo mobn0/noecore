@@ -62,6 +62,10 @@ github.com/mattn/go-sqlite3 v1.14.22 h1:2gZY6PC6kBnID23Tichd1K+Z0oS6nE/XwU+Vz/5o
 github.com/mattn/go-sqlite3 v1.14.22/go.mod h1:Uh1q+B4BYcTPb+yiD3kU8Ct7aC0hY9fxUwlHK0RXw+Y=
 github.com/mobn0/keygonomics v0.0.0-20260911185716-c3eebe3b7e6c h1:tut0GXTK0DTc7H6yeql76ESat6z6vMQCcGw3Bo3PU3g=
 github.com/mobn0/keygonomics v0.0.0-20260911185716-c3eebe3b7e6c/go.mod h1:pDJGW0rJrqqJsuJrA0f5U+YaQE4Zxyf3lL8qoSMg/VI=
+github.com/mobn0/keygonomics v0.0.0-20260911205300-87ee81054e63 h1:mYqU/zap8iMt0h2eJZK9+ts26DSaHcDQ5Lmxv0iZzBQ=
+github.com/mobn0/keygonomics v0.0.0-20260911205300-87ee81054e63/go.mod h1:pDJGW0rJrqqJsuJrA0f5U+YaQE4Zxyf3lL8qoSMg/VI=
+github.com/mobn0/keygonomics v1.1.0 h1:TprZ+tYlFl1wZccmSMijA65COiiXs6j0lwADHpC/PF4=
+github.com/mobn0/keygonomics v1.1.0/go.mod h1:pDJGW0rJrqqJsuJrA0f5U+YaQE4Zxyf3lL8qoSMg/VI=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd h1:TRLaZ9cD/w8PVh93nsPXa1VrQ6jlwL5oN8l14QlcNfg=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=

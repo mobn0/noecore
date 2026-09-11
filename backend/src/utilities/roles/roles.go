@@ -10,4 +10,5 @@ func (role Role) Role() string {
 
 const (
 	Poster Role = "poster"
+	Admin  Role = "admin"
 )

@@ -11,7 +11,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func Setup(controller *gin.RouterGroup, verifier *keygonomics.Verifier) {
+func Setup(controller *gin.RouterGroup) {
 	controller.Use(keygonomics.RequireRealmRole(roles.Poster.Role()))
 
 	validate := validator.New()
@@ -35,7 +35,6 @@ func Setup(controller *gin.RouterGroup, verifier *keygonomics.Verifier) {
 
 		res := Ping(request)
 		response.OK(c, res)
-		return
 	})
 
 	controller.POST("/post", func(c *gin.Context) {
@@ -61,7 +60,6 @@ func Setup(controller *gin.RouterGroup, verifier *keygonomics.Verifier) {
 		}
 
 		response.OK(c, res)
-		return
 
 	})
 
@@ -75,6 +73,5 @@ func Setup(controller *gin.RouterGroup, verifier *keygonomics.Verifier) {
 		}
 
 		response.OK(c, res)
-		return
 	})
 }

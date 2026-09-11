@@ -6,6 +6,7 @@ import { Forbidden } from './pages/forbidden/forbidden';
 import { inject } from '@angular/core';
 import { Roles } from './app.constants';
 import { Notfound } from './pages/notfound/notfound';
+import { Admin } from './pages/admin/admin';
 
 const roles = new Roles()
 
@@ -25,7 +26,13 @@ export const routes: Routes = [
         data: { role: roles.poster }
     },
     {
-        path:"**",
-        component:Notfound
+        path: "admin",
+        component: Admin,
+        canActivate: [canActivateAuthRole],
+        data: { role: roles.poster }
+    },
+    {
+        path: "**",
+        component: Notfound
     }
 ];

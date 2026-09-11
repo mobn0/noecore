@@ -1,3 +1,5 @@
+import { User } from "./users"
+
 export interface Response<data> {
     success: boolean
     data?: data
@@ -15,5 +17,9 @@ export interface PostRequest {
 
 export interface PostResponse {
     Message: string
+}
+
+export interface GetUsersResponse{
+    users: User[]
 }
 
