@@ -6,10 +6,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/mobn0/filestore/utilities/response"
+	"github.com/mobn0/filestore/utilities/roles"
+	"github.com/mobn0/keygonomics"
 	"gorm.io/gorm"
 )
 
-func Setup(controller *gin.RouterGroup) {
+func Setup(controller *gin.RouterGroup, verifier *keygonomics.Verifier) {
+	controller.Use(keygonomics.RequireRealmRole(roles.Poster.Role()))
+
 	validate := validator.New()
 	validate.RegisterValidation("ping-pinger", ValidatePingPinger)
 	validate.RegisterValidation("post-post", ValidatePostPost)

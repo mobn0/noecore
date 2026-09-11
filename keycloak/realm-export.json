@@ -67,6 +67,15 @@
         "attributes": {}
       },
       {
+        "id": "f1392cb0-1f51-4752-9bee-baeea0079de6",
+        "name": "ROLE_poster",
+        "description": "",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "f7dc2bed-5977-4a8f-874d-aae52cf0ca0c",
+        "attributes": {}
+      },
+      {
         "id": "1ed12d02-1e4f-4845-a837-58206e5578b6",
         "name": "default-roles-filestore",
         "description": "${role_default-roles}",
