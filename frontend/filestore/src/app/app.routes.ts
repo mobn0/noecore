@@ -29,7 +29,7 @@ export const routes: Routes = [
         path: "admin",
         component: Admin,
         canActivate: [canActivateAuthRole],
-        data: { role: roles.poster }
+        data: { role: roles.admin }
     },
     {
         path: "**",

@@ -24,4 +24,8 @@ export class Navbar {
   protected get is_poster() {
     return this.authService.has_role(this.roles.poster)
   }
+
+  protected get is_admin() {
+    return this.authService.has_role(this.roles.admin)
+  }
 }
