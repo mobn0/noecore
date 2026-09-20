@@ -1,40 +1,11 @@
 <mat-sidenav-container class="container">
-    <mat-sidenav mode="side" opened class="side custom-scrollbar" >
-        <mat-action-list class="action-list">
-                <mat-list-item [routerLink]="['overview']">Overview</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-                <mat-list-item [routerLink]="['roles']">Roles</mat-list-item>
-        </mat-action-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="custom-scrollbar">
-        <router-outlet ></router-outlet>
-        
-    </mat-sidenav-content>
+  <mat-sidenav mode="side" opened class="side custom-scrollbar">
+    <mat-action-list class="action-list">
+      <mat-list-item [routerLink]="['overview']">Overview</mat-list-item>
+      <mat-list-item [routerLink]="['users']">Users</mat-list-item>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="custom-scrollbar">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

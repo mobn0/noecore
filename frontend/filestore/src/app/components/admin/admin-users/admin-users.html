@@ -1,0 +1,15 @@
+<h1>Users</h1>
+<mat-form-field>
+  <mat-label>User</mat-label>
+  <mat-select [(value)]="selectedUID">
+    @for (user of users(); track $index) {
+      <mat-option [value]="user.uid">{{ user.username }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+@if (selectedUID() != '') {
+  <p>{{ selectedUserUsername() }}</p>
+  <p>{{ selectedUserUID() }}</p>
+  <p>{{ selectedUserRoles() }}</p>
+}
