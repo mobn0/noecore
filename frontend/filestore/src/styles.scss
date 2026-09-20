@@ -8,12 +8,16 @@
 
 html {
   height: 100%;
-  @include mat.theme((color: (primary: mat.$azure-palette,
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
         tertiary: mat.$blue-palette,
       ),
       typography: Roboto,
       density: 0,
-    ));
+    )
+  );
 }
 
 body {
@@ -36,12 +40,36 @@ body {
 
 /* You can add global styles to this file, and also import other style files */
 
-
-
-
 .error-snackbar {
   div {
-  background-color: var(--mat-sys-error-container) !important;
-  color: var(--mat-sys-on-error-container);
+    background-color: var(--mat-sys-error-container) !important;
+    color: var(--mat-sys-on-error-container);
+  }
+}
+
+.custom-scrollbar {
+  --scrollbar-thumb: rgb(0 0 0 / 0.26);
+
+  &,
+  & .mat-drawer-inner-container {
+    /* Chrome, Edge, Safari */
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 3px;
+    }
+
+    /* Firefox only */
+    @supports not selector(::-webkit-scrollbar) {
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) transparent;
+    }
   }
 }

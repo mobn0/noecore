@@ -7,32 +7,39 @@ import { inject } from '@angular/core';
 import { Roles } from './app.constants';
 import { Notfound } from './pages/notfound/notfound';
 import { Admin } from './pages/admin/admin';
+import { AdminOverview } from './components/admin-overview/admin-overview';
+import { AdminRoles } from './components/admin-roles/admin-roles';
 
-const roles = new Roles()
+const roles = new Roles();
 
 export const routes: Routes = [
-    {
-        path: "",
-        component: Home
-    },
-    {
-        path: "forbidden",
-        component: Forbidden
-    },
-    {
-        path: "messageboard",
-        component: Messageboard,
-        canActivate: [canActivateAuthRole],
-        data: { role: roles.poster }
-    },
-    {
-        path: "admin",
-        component: Admin,
-        canActivate: [canActivateAuthRole],
-        data: { role: roles.admin }
-    },
-    {
-        path: "**",
-        component: Notfound
-    }
+  {
+    path: '',
+    component: Home,
+  },
+  {
+    path: 'forbidden',
+    component: Forbidden,
+  },
+  {
+    path: 'messageboard',
+    component: Messageboard,
+    canActivate: [canActivateAuthRole],
+    data: { role: roles.poster },
+  },
+  {
+    path: 'admin',
+    component: Admin,
+    children: [
+      { path: '', component: AdminOverview },
+      { path: 'overview', component: AdminOverview },
+      { path: 'roles', component: AdminRoles },
+    ],
+    canActivate: [canActivateAuthRole],
+    data: { role: roles.admin },
+  },
+  {
+    path: '**',
+    component: Notfound,
+  },
 ];

@@ -1,8 +1,18 @@
-.users {
-    margin-bottom: 10px;
-    
-}
+.container {
+  height: 80vh;
 
-.content{
-    padding: 14px;
+  .side {
+    padding-right: 30px;
+    width: fit-content;
+    border-radius: 0;
+
+    .action-list {
+      padding-right: 5px;
+    }
+  }
+
+  .main-content {
+    justify-content: center;
+    padding: 8px;
+  }
 }
