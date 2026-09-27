@@ -1,21 +1,21 @@
 <mat-toolbar class="navbar">
   <a routerLink="/" matButton>
-    <h1>Filestore</h1>
+    <h1>NoeCore</h1>
   </a>
 
   <span class="spacer"></span>
 
   @if (is_poster) {
-  <a routerLink="/messageboard" matButton>Messageboard</a>
+    <a routerLink="/messageboard" matButton>Messageboard</a>
   }
 
   @if (is_admin) {
-  <a routerLink="/admin" matButton>Admin</a>
+    <a routerLink="/admin" matButton>Admin</a>
   }
 
   @if (is_logged_in) {
-  <app-logout />
+    <app-logout />
   } @else {
-  <app-login />
+    <app-login />
   }
 </mat-toolbar>
