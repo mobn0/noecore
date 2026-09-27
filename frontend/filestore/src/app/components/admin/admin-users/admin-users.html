@@ -9,7 +9,44 @@
 </mat-form-field>
 
 @if (selectedUID() != '') {
-  <p>{{ selectedUserUsername() }}</p>
-  <p>{{ selectedUserUID() }}</p>
-  <p>{{ selectedUserRoles() }}</p>
+  <mat-card appearance="filled">
+    <mat-card-header
+      ><h2>{{ selectedUserUsername() }}</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p>UUID: {{ selectedUserUID() }}</p>
+
+      <h3>Roles</h3>
+      <form [formGroup]="userAddRole" (ngSubmit)="addRole()">
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <input
+            type="text"
+            placeholder="Add Role"
+            aria-label="Role"
+            matInput
+            [matAutocomplete]="auto"
+            [formControl]="userAddRole.controls.role"
+          />
+          <mat-autocomplete requireSelection autoActiveFirstOption #auto="matAutocomplete">
+            @for (role of userAddRoleOptions | async; track $index) {
+              <mat-option [value]="role">{{ role }}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+        <button mat-button type="submit">Add Role</button>
+      </form>
+      <mat-list role="list">
+        @for (role of selectedUserRoles(); track $index) {
+          <li class="li">
+            <p>{{ role }}</p>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="removeRole(role)">
+              <mat-icon matIconButton fontIcon="remove"></mat-icon>
+            </button>
+          </li>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 }

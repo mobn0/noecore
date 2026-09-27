@@ -18,6 +18,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      keycloak:
+        condition: service_started
 
     restart: always
 
@@ -25,6 +27,10 @@ services:
     build: 
       context: frontend
       dockerfile: Dockerfile
+
+    depends_on:
+      keycloak:
+        condition: service_started
 
     ports:
       - 4200:4200
@@ -62,11 +68,18 @@ services:
       - KC_DB_DATABASE=keycloak
       - KC_DB_USERNAME=${POSTGRES_USER}
       - KC_DB_PASSWORD=${POSTGRES_PASSWORD}
+      - KC_HEALTH_ENABLED=true
 
     volumes:
       - ./keycloak:/opt/keycloak/data/import:ro
 
     restart: always
+
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/localhost/8080 && echo -e 'GET /health/ready HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && cat <&3 | grep -q '200 OK'"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
 
     depends_on:
       kc-db:
