@@ -4,6 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/mobn0/filestore/modules/admin"
+	"github.com/mobn0/filestore/modules/family"
 	"github.com/mobn0/filestore/modules/msgboard"
 	"github.com/mobn0/filestore/utilities/database"
 	"github.com/mobn0/filestore/utilities/keycloak"
@@ -28,6 +29,7 @@ func main() {
 
 	msgboard.Setup(engine.Group("/msgboard"))
 	admin.Setup(engine.Group("/admin"))
+	family.Setup(engine.Group("/family"))
 
 	engine.Run(":8080")
 

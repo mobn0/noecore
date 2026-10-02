@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 
+	"github.com/mobn0/filestore/modules/family"
 	"github.com/mobn0/filestore/modules/msgboard"
 	"github.com/mobn0/filestore/utilities/environment"
 	"gorm.io/driver/postgres"
@@ -18,6 +19,7 @@ func Setup() *gorm.DB {
 	}
 
 	msgboard.SetupModels(db)
+	family.SetupModels(db)
 
 	return db
 }

@@ -1,0 +1,8 @@
+{
+    "family":{
+        "name":["string"],
+        "head":["uuid"],
+        "roles": ["Role[]"]
+        
+    }
+}

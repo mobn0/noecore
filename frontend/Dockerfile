@@ -9,13 +9,13 @@ FROM dhi.io/node:24-alpine3.22-dev AS builder
 WORKDIR /app
 
 # Copy package-related files first to leverage Docker's caching mechanism
-COPY filestore/package.json filestore/package-lock.json* ./
+COPY noecore/package.json noecore/package-lock.json* ./
 
 # Install project dependencies using npm ci (ensures a clean, reproducible install)
 RUN --mount=type=cache,target=/root/.npm npm ci
 
 # Copy the rest of the application source code into the container
-COPY filestore/ .
+COPY noecore/ .
 
 # Build the Angular application
 RUN npm run build
